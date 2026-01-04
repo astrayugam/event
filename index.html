@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astra Yugam | Inter College Fest</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --dark: #050b1a;
+      --blue: #0b1d3a;
+      --card: rgba(212,175,55,0.95);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      background: #050b1a;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        url('BG.jpeg') center/cover no-repeat;
+      animation: galaxyMove 80s linear infinite;
+      z-index: -2;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .college-name {
+      background: #f2e6c9;
+      color: #1a1a1a;
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .college-name strong {
+      color: #1c3faa;
+    }
+
+    .dept {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      animation: fadeUp 1.6s ease both;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 20px;
+      animation: fadeUp 1.7s ease both;
+    }
+
+    .logo-container img {
+      width: 120px;
+      max-width: 40vw;
+      height: auto;
+      filter: drop-shadow(0 0 15px rgba(212,175,55,0.6));
+    }
+
+    .fest-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--gold);
+      margin: 20px 0 5px;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .fest-sub {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      font-size: 1.1rem;
+      animation: fadeUp 1.8s ease both;
+    }
+
+    /* ---------- EVENTS ---------- */
+    .events {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .events {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .events {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .event-card {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      height: 280px;
+      color: #111;
+      padding: 32px 22px 26px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+      animation: fadeUp 1s ease both;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 22px;
+      overflow: hidden;
+
+      /* Default (no image) */
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+    }
+    }
+
+    
+
+    .event-card:hover {
+      transform: translateY(-14px) scale(1.045);
+      box-shadow: 0 40px 90px rgba(255,255,255,0.55);
+    }
+
+    .event-card:hover h3 {
+      transform: translateY(-4px) scale(1.05);
+      color: #000;
+      letter-spacing: 1px;
+    }
+
+    .event-card:hover p {
+      transform: translateY(-2px);
+      color: #000;
+    }
+
+    /* ---------- EVENT CARD BACKGROUND IMAGE OPTION ---------- */
+    .event-card.has-bg {
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .event-card.has-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.25)
+      );
+      z-index: 0;
+    }
+
+    .event-card.has-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-card.has-bg h3,
+    .event-card.has-bg p {
+      color: #fff;
+    }
+
+    .event-card.has-bg .btn {
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    .event-card.has-bg .btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 35px 70px rgba(255,255,255,0.6);
+    }
+
+    .event-card h3 {
+      font-family: 'Cinzel', serif;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, color 0.3s ease, letter-spacing 0.3s ease;
+    }
+
+    .event-card p {
+      font-size: 0.9rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 11px 22px;
+      background: transparent;
+      color: #000;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.4);
+      transition: all 0.35s ease;
+    }
+
+    .btn:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+      background: linear-gradient(to top, #000, transparent);
+    }
+
+    .details-heading {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .contact-row h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .map-section {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .map-section h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 280px;
+      border-radius: 20px;
+      border: 3px dashed rgba(212,175,55,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.95rem;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .date {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    /* ---------- DECORATIVE LINES ---------- */
+    .frame {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      border: 2px solid rgba(212,175,55,0.4);
+      margin: 20px;
+      animation: pulseFrame 6s ease-in-out infinite;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(212,175,55,0.4); }
+      to { text-shadow: 0 0 25px rgba(212,175,55,0.9); }
+    }
+
+    @keyframes pulseFrame {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes galaxyMove {
+      from { transform: translateY(0); }
+      to { transform: translateY(-200px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="college-name">
+      <strong>PRAJYOTI NIKETAN COLLEGE</strong><br>
+      Govt. Aided & Affiliated to the University of Calicut<br>
+      Re-Accredited with ‘A’ Grade by NAAC
+    </div>
+
+    <div class="dept">DEPARTMENT OF COMMERCE PRESENTS</div>
+
+    <div class="logo-container">
+      <!-- Replace src with your logo file -->
+      <img src="logo.png" alt="Astra Yugam Logo">
+    </div>
+
+    <h1 class="fest-title">ASTRA YUGAM</h1>
+    <div class="fest-sub">INTER COLLEGE FEST</div>
+  </header>
+
+  <!-- EVENTS -->
+  <section class="events">
+    <div class="event-card">
+      <h3>Marketing</h3>
+      <p>1st Prize: ₹5000<br>2nd Prize: ₹2000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹150 | Spot: ₹200</p>
+      <a class="btn" href="https://forms.gle/marketing-form" target="_blank">Register</a>
+    </div>
+
+    <div class="event-card">
+      <h3>Shoot Out</h3>
+      <p>1st Prize: ₹3000<br>2nd Prize: ₹2000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹150 | Spot: ₹200</p>
+      <a class="btn" href="https://forms.gle/shootout-form" target="_blank">Register</a>
+    </div>
+
+    <div class="event-card">
+      <h3>Treasure Hunt</h3>
+      <p>1st Prize: ₹5000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹200 | Spot: ₹250</p>
+      <a class="btn" href="https://forms.gle/treasurehunt-form" target="_blank">Register</a>
+    </div>
+
+    <div class="event-card">
+      <h3>Quiz</h3>
+      <p>1st Prize: ₹5000<br>2nd Prize: ₹2000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹100 | Spot: ₹150</p>
+      <a class="btn" href="https://forms.gle/quiz-form" target="_blank">Register</a>
+    </div>
+
+    <div class="event-card">
+      <h3>Spot Photography</h3>
+      <p>1st Prize: ₹2000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹100 | Spot: ₹150</p>
+      <a class="btn" href="https://forms.gle/photography-form" target="_blank">Register</a>
+    </div>
+
+    <div class="event-card">
+      <h3>E-Football</h3>
+      <p>1st Prize: ₹3000<br>2nd Prize: ₹2000</p>
+      <p><strong>Reg Fee</strong><br>Online: ₹100 | Spot: ₹150</p>
+      <a class="btn" href="https://forms.gle/efootball-form" target="_blank">Register</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h3 class="details-heading">For More Details</h3>
+
+    <div class="contact">
+      <div class="contact-group">
+        <h4 class="group-title">Event Coordinators</h4>
+        <div class="contact-row">
+          <p>Adarsh P S – +91 9567212415</p>
+        </div>
+        <div class="contact-row">
+          <p>Josmin Johnson – +91 8848356440</p>
+        </div>
+      </div>
+
+      <div class="contact-group">
+        <h4 class="group-title">Faculty Coordinator</h4>
+        <div class="contact-row">
+          <p>Mr. George Jose – +91 9495833468</p>
+        </div>
+      </div>
+    </div>
+
+      
+    </div>
+
+    <div class="map-section">
+      <h4>Location</h4>
+      <div class="map-placeholder">Google Map Embed Here</div>
+    </div>
+
+    <div class="date">13th January 2026</div>
+  </footer>
+
+</body>
+</html>
